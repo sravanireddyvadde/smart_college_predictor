@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: smart-college-predictor
+    env: python
+    buildCommand: ""
+    startCommand: gunicorn run:app
+    region: oregon
+    plan: free
+    envVars:
+      - key: FLASK_ENV
+        value: production

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>🎯 Prediction Result</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #4a148c;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        th, td {
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f3e5f5;
+        }
+
+        a {
+            text-decoration: none;
+            color: #4a148c;
+        }
+
+        .no-result {
+            color: red;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>🎯 Predicted College Result</h1>
+
+    {% if colleges %}
+        <table>
+            <tr>
+                <th>College</th>
+                <th>Branch</th>
+                <th>Rank</th>
+                <th>Seat Category</th>
+                <th>Fee</th>
+            </tr>
+            {% for college in colleges %}
+            <tr>
+                <td>{{ college.college }}</td>
+                <td>{{ college.branch }}</td>
+                <td>{{ college.rank }}</td>
+                <td>{{ college.seat_category }}</td>
+                <td>{{ college.fee }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    {% else %}
+        <div class="no-result">❌ Sorry, no prediction was made. Try different inputs!</div>
+    {% endif %}
+
+    <br><br>
+    <a href="/">🔁 Try Another Prediction</a>
+</body>
+</html>

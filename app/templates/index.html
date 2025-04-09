@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>🎓 Smart College Predictor</title>
+</head>
+<body>
+    <h1>Smart College Predictor</h1>
+    <form method="POST" action="/predict">
+        <label>Rank:</label>
+        <input type="number" name="rank" required><br><br>
+
+        <label>Gender:</label>
+        <select name="gender" required>
+            <option value="M">Male</option>
+            <option value="F">Female</option>
+        </select><br><br>
+
+        <label>Caste:</label>
+        <select name="caste" required>
+            <option value="OC">OC</option>
+            <option value="BC_A">BC_A</option>
+            <option value="BC_B">BC_B</option>
+            <option value="BC_C">BC_C</option>
+            <option value="BC_D">BC_D</option>
+            <option value="BC_E">BC_E</option>
+            <option value="SC">SC</option>
+            <option value="ST">ST</option>
+        </select><br><br>
+
+        <label>Region:</label>
+        <select name="region" required>
+            <option value="AU">AU</option>
+            <option value="OU">OU</option>
+            <option value="SVU">SVU</option>
+        </select><br><br>
+
+        <input type="submit" value="Predict Colleges">
+    </form>
+</body>
+</html>
