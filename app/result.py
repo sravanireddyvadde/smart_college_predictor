@@ -2,33 +2,29 @@ import pandas as pd
 
 def get_prediction(rank, gender, caste, region):
     print("📥 Loading data...")
-    df = pd.read_csv('tseamcet.csv')
+    df = pd.read_csv("tseamcet.csv")
 
-    print("✅ Columns in dataset:", list(df.columns))
+    # Check column names
+    print("✅ Columns in dataset:", df.columns.tolist())
 
-    # Normalize string columns
-    df['gender'] = df['gender'].str.strip().str.lower()
-    df['caste'] = df['caste'].str.strip().str.lower()
-    df['region'] = df['region'].str.strip().str.lower()
-
-    gender = gender.strip().lower()
-    caste = caste.strip().lower()
-    region = region.strip().lower()
+    # Convert strings to lowercase for consistent filtering
+    df['gender'] = df['gender'].str.lower()
+    df['caste'] = df['caste'].str.lower()
+    df['region'] = df['region'].str.lower()
 
     print("🔍 Filtering based on input criteria...")
-    filtered = df[
-        (df['gender'] == gender) &
-        (df['caste'] == caste) &
-        (df['region'] == region) &
+    filtered_df = df[
+        (df['gender'] == gender.lower()) &
+        (df['caste'] == caste.lower()) &
+        (df['region'] == region.lower()) &
         (df['rank'] >= rank)
     ]
 
-    print(f"🧮 Records matching filters: {len(filtered)}")
-    if filtered.empty:
+    print(f"🧮 Records matching filters: {len(filtered_df)}")
+
+    if filtered_df.empty:
         print("🚫 No matching colleges found for given inputs.")
         return pd.DataFrame()
 
-    top = filtered.sort_values(by='rank').head(10)
-    print("✅ Top 10 results selected.")
-
-    return top[['college', 'branch', 'rank', 'seat_category', 'fee']]
+    result = filtered_df.sort_values(by='rank').head(10)
+    return result[['college', 'branch', 'rank', 'seat_category', 'fee']]

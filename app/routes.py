@@ -1,5 +1,6 @@
 from flask import Blueprint, render_template, request
-from result import get_prediction
+import pandas as pd
+from .result import get_prediction
 
 main = Blueprint('main', __name__)
 
@@ -9,14 +10,14 @@ def index():
 
 @main.route('/predict', methods=['POST'])
 def predict():
-    rank = int(request.form['rank'])
-    gender = request.form['gender']
-    caste = request.form['caste']
-    region = request.form['region']
+    try:
+        rank = int(request.form['rank'])
+        gender = request.form['gender']
+        caste = request.form['caste']
+        region = request.form['region']
 
-    results = get_prediction(rank, gender, caste, region)
+        colleges = get_prediction(rank, gender, caste, region)
 
-    if results.empty:
-        return render_template('result.html', colleges=None)
-
-    return render_template('result.html', colleges=results.to_dict(orient='records'))
+        return render_template('result.html', colleges=colleges.to_dict(orient='records'))
+    except Exception as e:
+        return render_template('result.html', colleges=[], error=str(e))
