@@ -4,6 +4,3 @@ services:
     env: python
     buildCommand: ""
     startCommand: gunicorn run:app
-    envVars:
-      - key: PORT
-        value: 10000
