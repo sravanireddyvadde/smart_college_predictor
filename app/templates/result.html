@@ -4,69 +4,108 @@
     <title>🎯 Prediction Result</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            padding: 20px;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #fce3ff, #f4e1ff, #e3f2fd);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            background-color: #ffffff;
+            padding: 30px 40px;
+            border-radius: 16px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            max-width: 1000px;
+            width: 95%;
+            text-align: center;
         }
 
         h1 {
-            color: #4a148c;
+            color: #6a1b9a;
+            font-size: 28px;
+            margin-bottom: 25px;
         }
 
         table {
-            border-collapse: collapse;
             width: 100%;
+            border-collapse: collapse;
             margin-top: 20px;
+            font-size: 15px;
         }
 
         th, td {
-            border: 1px solid #ccc;
-            padding: 10px;
-            text-align: left;
+            padding: 12px;
+            border: 1px solid #ddd;
         }
 
         th {
-            background-color: #f3e5f5;
-        }
-
-        a {
-            text-decoration: none;
+            background-color: #ede7f6;
             color: #4a148c;
         }
 
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        tr:hover {
+            background-color: #f3e5f5;
+        }
+
         .no-result {
-            color: red;
+            font-size: 16px;
+            color: crimson;
             font-weight: bold;
             margin-top: 20px;
+        }
+
+        a {
+            display: inline-block;
+            margin-top: 30px;
+            background-color: #6a1b9a;
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            transition: background-color 0.3s;
+        }
+
+        a:hover {
+            background-color: #4a148c;
         }
     </style>
 </head>
 <body>
-    <h1>🎯 Predicted College Result</h1>
+    <div class="container">
+        <h1>🎯 Predicted College Result</h1>
 
-    {% if colleges %}
-        <table>
-            <tr>
-                <th>College</th>
-                <th>Branch</th>
-                <th>Rank</th>
-                <th>Seat Category</th>
-                <th>Fee</th>
-            </tr>
-            {% for college in colleges %}
-            <tr>
-                <td>{{ college.college }}</td>
-                <td>{{ college.branch }}</td>
-                <td>{{ college.rank }}</td>
-                <td>{{ college.seat_category }}</td>
-                <td>{{ college.fee }}</td>
-            </tr>
-            {% endfor %}
-        </table>
-    {% else %}
-        <div class="no-result">❌ Sorry, no prediction was made. Try different inputs!</div>
-    {% endif %}
+        {% if colleges %}
+            <table>
+                <tr>
+                    <th>College</th>
+                    <th>Branch</th>
+                    <th>Rank</th>
+                    <th>Seat Category</th>
+                    <th>Fee</th>
+                </tr>
+                {% for college in colleges %}
+                <tr>
+                    <td>{{ college.college }}</td>
+                    <td>{{ college.branch }}</td>
+                    <td>{{ college.rank }}</td>
+                    <td>{{ college.seat_category }}</td>
+                    <td>{{ college.fee }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        {% else %}
+            <div class="no-result">❌ Sorry, no prediction was made. Try different inputs!</div>
+        {% endif %}
 
-    <br><br>
-    <a href="/">🔁 Try Another Prediction</a>
+        <a href="/">🔁 Try Another Prediction</a>
+    </div>
 </body>
 </html>

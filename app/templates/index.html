@@ -2,39 +2,101 @@
 <html>
 <head>
     <title>🎓 Smart College Predictor</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #e3f2fd, #fce4ec);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            background-color: #ffffff;
+            padding: 40px 50px;
+            border-radius: 16px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 500px;
+            text-align: center;
+        }
+
+        h1 {
+            margin-bottom: 30px;
+            color: #4a148c;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            text-align: left;
+            font-weight: bold;
+            color: #333;
+        }
+
+        input[type="number"],
+        select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            font-size: 14px;
+        }
+
+        input[type="submit"] {
+            background-color: #6a1b9a;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 15px;
+            transition: background-color 0.3s ease;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #4a148c;
+        }
+    </style>
 </head>
 <body>
-    <h1>Smart College Predictor</h1>
-    <form method="POST" action="/predict">
-        <label>Rank:</label>
-        <input type="number" name="rank" required><br><br>
+    <div class="container">
+        <h1>Smart College Predictor</h1>
+        <form method="POST" action="/predict">
+            <label>Rank:</label>
+            <input type="number" name="rank" required><br><br>
 
-        <label>Gender:</label>
-        <select name="gender" required>
-            <option value="M">Male</option>
-            <option value="F">Female</option>
-        </select><br><br>
+            <label>Gender:</label>
+            <select name="gender" required>
+                <option value="M">Male</option>
+                <option value="F">Female</option>
+            </select><br><br>
 
-        <label>Caste:</label>
-        <select name="caste" required>
-            <option value="OC">OC</option>
-            <option value="BC_A">BC_A</option>
-            <option value="BC_B">BC_B</option>
-            <option value="BC_C">BC_C</option>
-            <option value="BC_D">BC_D</option>
-            <option value="BC_E">BC_E</option>
-            <option value="SC">SC</option>
-            <option value="ST">ST</option>
-        </select><br><br>
+            <label>Caste:</label>
+            <select name="caste" required>
+                <option value="OC">OC</option>
+                <option value="BC_A">BC_A</option>
+                <option value="BC_B">BC_B</option>
+                <option value="BC_C">BC_C</option>
+                <option value="BC_D">BC_D</option>
+                <option value="BC_E">BC_E</option>
+                <option value="SC">SC</option>
+                <option value="ST">ST</option>
+            </select><br><br>
 
-        <label>Region:</label>
-        <select name="region" required>
-            <option value="AU">AU</option>
-            <option value="OU">OU</option>
-            <option value="SVU">SVU</option>
-        </select><br><br>
+            <label>Region:</label>
+            <select name="region" required>
+                <option value="AU">AU</option>
+                <option value="OU">OU</option>
+                <option value="SVU">SVU</option>
+            </select><br><br>
 
-        <input type="submit" value="Predict Colleges">
-    </form>
+            <input type="submit" value="Predict Colleges">
+        </form>
+    </div>
 </body>
 </html>
